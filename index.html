@@ -20,7 +20,7 @@
 <script>
 
 var data = [8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8];
-
+var data1 = [128]
 var width = 960,
     height = 500,
     outerRadius = height / 2 - 30,
@@ -49,6 +49,12 @@ var roundPath = svg.append("g")
     .data(data)
   .enter().append("path");
 
+var innerCircle = svg.append("g")
+    .attr("class", "paths--round")
+  .selectAll("path")
+    .data(data1)
+  .enter().append("path");
+  
 var ease = d3.ease("cubic-in-out"),
     duration = 250000;
 
