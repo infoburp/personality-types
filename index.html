@@ -50,7 +50,7 @@ var roundPath = svg.append("g")
   .enter().append("path");
 
 var ease = d3.ease("cubic-in-out"),
-    duration = 250000000;
+    duration = 250000;
 
 d3.timer(function(elapsed) {
   var t = ease(1 - Math.abs((elapsed % duration) / duration - .5) * 2),
