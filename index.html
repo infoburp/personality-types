@@ -49,4 +49,16 @@ var roundPath = svg.append("g")
     .data(data)
   .enter().append("path");
 
+var ease = d3.ease("cubic-in-out"),
+    duration = 250000000;
+
+d3.timer(function(elapsed) {
+  var t = ease(1 - Math.abs((elapsed % duration) / duration - .5) * 2),
+      arcs = pie.padAngle(t * .1)(data);
+
+  arc.innerRadius(outerRadius / (3 - t));
+  straightPath.data(arcs).attr("d", arc.cornerRadius(0));
+  roundPath.data(arcs).attr("d", arc.cornerRadius(cornerRadius));
+});
+
 </script>
